@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="zwai.js"></script>
+    <script src="zw.js"></script>
+    <title>jdaless</title>
+</head>
+<body>
+
+<h1>jdaless</h1>
+
+
+<table class="board" id="board">
+    <tr>
+        <td class="letters"></td>
+        <td class="letters">a</td>
+        <td class="letters">b</td>
+        <td class="letters">c</td>
+    </tr>
+    <tr>
+        <td class="letters">a</td>
+        <td>
+            <button type="button" id="AA" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="BA" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="CA" class="col" value="">&nbsp;</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="letters">b</td>
+        <td>
+            <button type="button" id="AB" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="BB" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="CB" class="col" value="">&nbsp;</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="letters">c</td>
+        <td>
+            <button type="button" id="AC" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="BC" class="col" value="">&nbsp;</button>
+        </td>
+        <td>
+            <button type="button" id="CC" class="col" value="">&nbsp;</button>
+        </td>
+    </tr>
+</table>
+<div class="tomove">
+    <div class="currentmove">queue:</div>
+    <div class="piece" id="next"></div>
+</div>
+<div id="button-container">
+    <button id="reset-button" style="display: none" onclick="resetBoard()">reset</button>
+</div>
+
+<div id="links">
+    <span>
+        <a href="https://github.com/jdaless" aria-label="github"><i class="fab fa-github"></i></a>
+    </span>
+    <span>
+        <a href="https://www.linkedin.com/in/jdaless" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
+    </span>
+    <span>
+        <a href="/jdaless.pdf" aria-label="resume"><i class="fas fa-file-pdf"></i></a>
+    </span>
+    <span>
+        <a href="https://www.dwitter.net/u/jdaless" aria-label="dwitter">dwitter</a>
+    </span>
+    <span>
+        <a href="mailto:dalessandro.john.24@gmail.com" aria-label="email"><i class="far fa-envelope"></i></a>
+    </span>
+</div>
+
+</body>
+<script>
+    var count = new Date().getTime();
+    document.body.style.backgroundColor = "hsl("+(count/20)%360+",20%,80%)";
+    setInterval(function(){
+        count = new Date().getTime();
+        if(winstate()){
+            console.log("win");
+            document.querySelector(".gameoverboard").style.backgroundColor = "hsl("+((count/20) + 180)%360+",20%,80%)";
+        }
+        document.body.style.backgroundColor = "hsl("+(count/20)%360+",20%,80%)";
+    }, 1)
+</script>
+</html>
