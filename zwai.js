@@ -45,9 +45,8 @@ function aiTurn(turn, diff){
 
         // check each condition for the line
         for(i=0;i<4;i++){
-            if(i < diff )
-                if(conditions[i] == 2 && buffer != '')
-                    moves.push([buffer, i]);
+            if(i < diff && conditions[i] == 2 && buffer != '')
+                moves.push([buffer, i]);
         }            
     });
 

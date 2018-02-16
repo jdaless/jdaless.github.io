@@ -28,56 +28,64 @@
 </div>
 
 <div id="game" style="display: none">
-    <table class="board" id="board">
-        <tr>
-            <td class="letters"></td>
-            <td class="letters">a</td>
-            <td class="letters">b</td>
-            <td class="letters">c</td>
-        </tr>
-        <tr>
-            <td class="letters">a</td>
-            <td>
-                <button type="button" id="AA" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="BA" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="CA" class="col" value="">&nbsp;</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="letters">b</td>
-            <td>
-                <button type="button" id="AB" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="BB" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="CB" class="col" value="">&nbsp;</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="letters">c</td>
-            <td>
-                <button type="button" id="AC" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="BC" class="col" value="">&nbsp;</button>
-            </td>
-            <td>
-                <button type="button" id="CC" class="col" value="">&nbsp;</button>
-            </td>
-        </tr>
-    </table>
+    <div class="board" id="board">
+        <div id="table-container">
+            <table>
+                <tr>
+                    <td class="letters"></td>
+                    <td class="letters">a</td>
+                    <td class="letters">b</td>
+                    <td class="letters">c</td>
+                </tr>
+                <tr>
+                    <td class="letters">a</td>
+                    <td>
+                        <button type="button" id="AA" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="BA" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="CA" class="col" value="">&nbsp;</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="letters">b</td>
+                    <td>
+                        <button type="button" id="AB" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="BB" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="CB" class="col" value="">&nbsp;</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="letters">c</td>
+                    <td>
+                        <button type="button" id="AC" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="BC" class="col" value="">&nbsp;</button>
+                    </td>
+                    <td>
+                        <button type="button" id="CC" class="col" value="">&nbsp;</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="move-container">
+            <textarea id="moves" readonly></textarea>
+            <button type='gui' id="copy-button" onclick="copyGame()">copy game</button>
+        </div>
+    </div>
     <div class="tomove">
         <div class="currentmove">queue:</div>
         <div class="piece" id="next"></div>
     </div>
     <div id="button-container">
-        <button type='gui' id="reset-button" style="display: none" onclick="reset()">reset</button>
+        <button type='gui' id="reset-button" onclick="reset()">reset</button>
     </div>
 </div>
 
@@ -110,5 +118,14 @@
         }
         document.body.style.backgroundColor = "hsl("+(count/20)%360+",20%,80%)";
     }, 1);
+    copyGame = function(){
+        document.getElementById("moves").select();
+        document.execCommand("Copy");
+        if ( document.selection ) {
+            document.selection.empty();
+        } else if ( window.getSelection ) {
+            window.getSelection().removeAllRanges();
+        }
+    }
 </script>
 </html>
