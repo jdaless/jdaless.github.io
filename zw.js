@@ -12,7 +12,8 @@ var winlines = [
     ['CA', 'BB', 'AC']
 ];
 var players = ['white', 'black'];
-aiMove = Math.floor(Math.random() * 2) == 0;
+var aiMove = false;
+var humans;
 window.onload = function(){
     nextpiece();
     document.querySelectorAll('.col').forEach(function(element){
@@ -33,23 +34,24 @@ window.onload = function(){
                 turn++;
                 winstate();
                 nextpiece();
-                if(!aiMove){
-                    aiMove = true;
-                    aiTurn(turn);
-                    aiMove = false;
-                }
+                if(humans == 1)
+                    aiMove = !aiMove;
             }
         }
     });
 
-    //If the machine goes first
-    if(aiMove){
-        aiTurn(turn);
-        aiMove = false;
-    }
+    setInterval(function(){
+        if(aiMove && humans != 2){
+            aiTurn(turn);
+        }
+    }, 750);
+
 }
-function resetBoard(){
-    document.querySelector("#reset-button").style.display = "none";
+function startGame(p){
+    humans = p;
+    document.querySelector("#game").style.display = "inline-block";
+    document.querySelector("#game-options").style.display = "none";
+    document.querySelector("#reset-button").style.display = "inline-block";
     document.querySelectorAll('.col').forEach(function(element){
         element.innerHTML = "&nbsp;"
         element.value = '';
@@ -58,12 +60,12 @@ function resetBoard(){
     document.getElementById('board').className = '';
     turn = 0;
     nextpiece();
-    aiMove = Math.floor(Math.random() * 2) == 0;
-    if(aiMove){
-        aiTurn(turn);
-        aiMove = false;
-    }
+    aiMove = Math.floor(Math.random() * 2) == 0 || humans == 0;
 
+}
+function reset(){
+    document.querySelector("#game").style.display = "none";
+    document.querySelector("#game-options").style.display = "inline-block";
 }
 function nextpiece() {
     document.getElementById("next").innerHTML = " " +

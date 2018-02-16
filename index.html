@@ -11,57 +11,64 @@
 
 <h1>jdaless</h1>
 
-
-<table class="board" id="board">
-    <tr>
-        <td class="letters"></td>
-        <td class="letters">a</td>
-        <td class="letters">b</td>
-        <td class="letters">c</td>
-    </tr>
-    <tr>
-        <td class="letters">a</td>
-        <td>
-            <button type="button" id="AA" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="BA" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="CA" class="col" value="">&nbsp;</button>
-        </td>
-    </tr>
-    <tr>
-        <td class="letters">b</td>
-        <td>
-            <button type="button" id="AB" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="BB" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="CB" class="col" value="">&nbsp;</button>
-        </td>
-    </tr>
-    <tr>
-        <td class="letters">c</td>
-        <td>
-            <button type="button" id="AC" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="BC" class="col" value="">&nbsp;</button>
-        </td>
-        <td>
-            <button type="button" id="CC" class="col" value="">&nbsp;</button>
-        </td>
-    </tr>
-</table>
-<div class="tomove">
-    <div class="currentmove">queue:</div>
-    <div class="piece" id="next"></div>
+<div id="game-options">
+    <button type='gui' onclick="startGame(0)">0 players</button>
+    <button type='gui' onclick="startGame(1)">1 player</button>
+    <button type='gui' onclick="startGame(2)">2 players</button>
 </div>
-<div id="button-container">
-    <button id="reset-button" style="display: none" onclick="resetBoard()">reset</button>
+
+<div id="game" style="display: none">
+    <table class="board" id="board">
+        <tr>
+            <td class="letters"></td>
+            <td class="letters">a</td>
+            <td class="letters">b</td>
+            <td class="letters">c</td>
+        </tr>
+        <tr>
+            <td class="letters">a</td>
+            <td>
+                <button type="button" id="AA" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="BA" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="CA" class="col" value="">&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="letters">b</td>
+            <td>
+                <button type="button" id="AB" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="BB" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="CB" class="col" value="">&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="letters">c</td>
+            <td>
+                <button type="button" id="AC" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="BC" class="col" value="">&nbsp;</button>
+            </td>
+            <td>
+                <button type="button" id="CC" class="col" value="">&nbsp;</button>
+            </td>
+        </tr>
+    </table>
+    <div class="tomove">
+        <div class="currentmove">queue:</div>
+        <div class="piece" id="next"></div>
+    </div>
+    <div id="button-container">
+        <button type='gui' id="reset-button" style="display: none" onclick="reset()">reset</button>
+    </div>
 </div>
 
 <div id="links">
@@ -93,6 +100,6 @@
             document.querySelector(".gameoverboard").style.backgroundColor = "hsl("+((count/20) + 180)%360+",20%,80%)";
         }
         document.body.style.backgroundColor = "hsl("+(count/20)%360+",20%,80%)";
-    }, 1)
+    }, 1);
 </script>
 </html>
