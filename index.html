@@ -12,9 +12,19 @@
 <h1>jdaless</h1>
 
 <div id="game-options">
-    <button type='gui' onclick="startGame(0)">0 players</button>
-    <button type='gui' onclick="startGame(1)">1 player</button>
-    <button type='gui' onclick="startGame(2)">2 players</button>
+    <button type='gui' onclick="startGame(0)">computer v. computer</button>
+    <button type='gui' onclick="startGame(1)">player<br>v. computer</button>
+    <button type='gui' onclick="startGame(2)">player<br>v.<br>player</button>
+    <div id="difficulty-label">
+        <span id="label-text">difficulty: </span>
+        <input type="range" min="1" max="4" value="4" class="slider" id="difficulty">
+    </div>
+    <p>
+        get three in a row to win
+    </p>
+    <p>
+        <a href="https://github.com/jdaless/jdaless.github.io">click here to see the code</a>
+    </p>
 </div>
 
 <div id="game" style="display: none">
@@ -96,7 +106,6 @@
     setInterval(function(){
         count = new Date().getTime();
         if(winstate()){
-            console.log("win");
             document.querySelector(".gameoverboard").style.backgroundColor = "hsl("+((count/20) + 180)%360+",20%,80%)";
         }
         document.body.style.backgroundColor = "hsl("+(count/20)%360+",20%,80%)";

@@ -14,6 +14,7 @@ var winlines = [
 var players = ['white', 'black'];
 var aiMove = false;
 var humans;
+var diff;
 window.onload = function(){
     nextpiece();
     document.querySelectorAll('.col').forEach(function(element){
@@ -42,16 +43,18 @@ window.onload = function(){
 
     setInterval(function(){
         if(aiMove && humans != 2){
-            aiTurn(turn);
+            aiTurn(turn, diff);
         }
     }, 750);
 
 }
 function startGame(p){
     humans = p;
+    diff = document.querySelector("#difficulty").value;
     document.querySelector("#game").style.display = "inline-block";
     document.querySelector("#game-options").style.display = "none";
     document.querySelector("#reset-button").style.display = "inline-block";
+    document.querySelector("#reset-button").innerHTML = "reset";
     document.querySelectorAll('.col').forEach(function(element){
         element.innerHTML = "&nbsp;"
         element.value = '';

@@ -94,6 +94,7 @@ button[type="gui"]{
     background: #ddd;
     border-width: 0px;
     border-radius: 4px;
+    width: 70px;
 }
 #button-container{
     height: 40px;
@@ -103,4 +104,11 @@ button[type="gui"]{
 }
 #game{
     height: 340px;
+}
+#difficulty-label{
+    height: 28px;
+    margin-top: 10px;
+}
+#difficulty-label *{
+    vertical-align: middle;
 }

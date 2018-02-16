@@ -1,4 +1,4 @@
-function aiTurn(turn){
+function aiTurn(turn, diff){
     var winlines = [
         ['AA', 'BA', 'CA'], // Top row
         ['AB', 'BB', 'CB'], // Middle Row
@@ -45,8 +45,9 @@ function aiTurn(turn){
 
         // check each condition for the line
         for(i=0;i<4;i++){
-            if(conditions[i] == 2 && buffer != '')
-                moves.push([buffer, i]);
+            if(i < diff )
+                if(conditions[i] == 2 && buffer != '')
+                    moves.push([buffer, i]);
         }            
     });
 
